@@ -12,7 +12,6 @@
 		CEA9B61A19AD751900424230 /* DZ_BEELIB.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA9B61919AD751900424230 /* DZ_BEELIB.m */; };
 		CEA9B62119AD751900424230 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA9B62019AD751900424230 /* XCTest.framework */; };
 		CEA9B62219AD751900424230 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA9B61219AD751900424230 /* Foundation.framework */; };
-		CEA9B62419AD751900424230 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA9B62319AD751900424230 /* UIKit.framework */; };
 		CEA9B62719AD751900424230 /* libDZ_BEELIB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA9B60F19AD751900424230 /* libDZ_BEELIB.a */; };
 		CEA9B62D19AD751900424230 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEA9B62B19AD751900424230 /* InfoPlist.strings */; };
 		CEA9B62F19AD751900424230 /* DZ_BEELIBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA9B62E19AD751900424230 /* DZ_BEELIBTests.m */; };
@@ -715,7 +714,6 @@
 		CEA9B61919AD751900424230 /* DZ_BEELIB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZ_BEELIB.m; sourceTree = "<group>"; };
 		CEA9B61F19AD751900424230 /* DZ_BEELIBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DZ_BEELIBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA9B62019AD751900424230 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		CEA9B62319AD751900424230 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		CEA9B62A19AD751900424230 /* DZ_BEELIBTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DZ_BEELIBTests-Info.plist"; sourceTree = "<group>"; };
 		CEA9B62C19AD751900424230 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CEA9B62E19AD751900424230 /* DZ_BEELIBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZ_BEELIBTests.m; sourceTree = "<group>"; };
@@ -1413,7 +1411,6 @@
 			files = (
 				CEA9B62719AD751900424230 /* libDZ_BEELIB.a in Frameworks */,
 				CEA9B62119AD751900424230 /* XCTest.framework in Frameworks */,
-				CEA9B62419AD751900424230 /* UIKit.framework in Frameworks */,
 				CEA9B62219AD751900424230 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1448,7 +1445,6 @@
 				CEA9BBBE19AD760500424230 /* UIKit.framework */,
 				CEA9B61219AD751900424230 /* Foundation.framework */,
 				CEA9B62019AD751900424230 /* XCTest.framework */,
-				CEA9B62319AD751900424230 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
