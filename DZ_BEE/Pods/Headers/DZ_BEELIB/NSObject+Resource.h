@@ -1,0 +1,1 @@
+../../../../framework/system/resource/extension/NSObject+Resource.h

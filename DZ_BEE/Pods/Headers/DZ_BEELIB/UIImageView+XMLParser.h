@@ -1,0 +1,1 @@
+../../../../framework/mvc/view/template/parser-xml/UIImageView+XMLParser.h

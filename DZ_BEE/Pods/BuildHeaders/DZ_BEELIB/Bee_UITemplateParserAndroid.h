@@ -1,0 +1,1 @@
+../../../../framework/mvc/view/template/parser-android/Bee_UITemplateParserAndroid.h
