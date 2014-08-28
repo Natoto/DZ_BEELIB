@@ -14,11 +14,6 @@ Pod::Spec.new do |s|
   s.frameworks = 'CoreMedia', 'CoreVideo', 'AVFoundation', 'Security', 'SystemConfiguration', 'QuartzCore', 'MobileCoreServices', 'CFNetwork'
   s.vendored_libraries = 'services/**/*.a'
   s.library = 'z', 'xml2', 'sqlite3'
-  
-  s.subspec 'JSONKit' do |sp|
-    sp.source_files = 'framework/vendor/JSONKit/JSONKit.{h,m}'
-    sp.requires_arc = false
-  end
 
   s.subspec 'Core' do |sp|
     sp.resource  = 'services/**/*.{xml, bundle}'
