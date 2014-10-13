@@ -29,6 +29,8 @@
 //	IN THE SOFTWARE.
 //
 
+
+//#define IMAGEURLNEEDADDSECRET 0
 #if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)
 
 #import "Bee_UIImageView.h"
@@ -44,7 +46,7 @@
 #import "UIView+BeeUISignal.h"
 #import "UIView+LifeCycle.h"
 #import "UIView+Transition.h"
-#import "rmbdz.h"
+//#import "rmbdz.h"
 
 #pragma mark -
 
@@ -380,9 +382,9 @@ DEF_SIGNAL( LOAD_CACHE )
 		newURL = [NSString stringWithFormat:@"http://%@", newURL];
 	}
     
-    if (IMAGEURLNEEDADDSECRET) {
-        newURL = [NSString stringWithFormat:@"%@%@",newURL,[ServerConfig sharedInstance].urlpostfix];
-    }
+//    if (IMAGEURLNEEDADDSECRET) {
+//        newURL = [NSString stringWithFormat:@"%@%@",newURL,[ServerConfig sharedInstance].urlpostfix];
+//    }
     
 	if ( [self requestingURL:newURL] )
 	{

@@ -230,7 +230,7 @@ DEF_INT( STATE_REDIRECTED,	6 );
 		[_callstack addObjectsFromArray:[BeeRuntime callstack:16]];
 	#endif	// #if __BEE_DEVELOPMENT__
 
-		self.userAgent = [BeeHTTPClientConfig sharedInstance].userAgent;
+//		self.userAgent = [BeeHTTPClientConfig sharedInstance].userAgent;
 	}
 
 	return self;
@@ -664,7 +664,7 @@ DEF_INT( STATE_REDIRECTED,	6 );
 				NSString * query = self.url.query;
 				
 				NSURL * newURL = nil;
-                BeeLog(@"query: %@",query);
+
 				if ( query.length )
 				{
 					newURL = [NSURL URLWithString:[base stringByAppendingFormat:@"&%@", params]];

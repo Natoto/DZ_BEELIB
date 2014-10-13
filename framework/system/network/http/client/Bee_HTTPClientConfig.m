@@ -88,7 +88,7 @@ DEF_SINGLETON( BeeHTTPClientConfig )
 	{
 		self.concurrentForWIFI = CONCURRENT_FOR_WIFI;
 		self.concurrentForWLAN = CONCURRENT_FOR_WIFI;
-		self.userAgent = [NSString stringWithFormat:@"HBDZ/%@", BEE_VERSION];
+		self.userAgent = [NSString stringWithFormat:@"bee/%@", BEE_VERSION];
 
 		[self switchWIFI];
 
