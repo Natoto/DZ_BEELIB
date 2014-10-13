@@ -276,7 +276,9 @@ DEF_SINGLETON( BeeHTTPRequestQueue )
 {
 	return [[BeeHTTPRequestQueue sharedInstance] POST:url sync:NO];
 }
-
+/*
+ POST 存在一个bug 遇到一些情况不建议用POST 而应该改用PUT put方法有改动 ---huangbo
+ */
 - (BeeHTTPRequest *)POST:(NSString *)url sync:(BOOL)sync
 {
 	BeeHTTPRequest * request = nil;
@@ -294,7 +296,8 @@ DEF_SINGLETON( BeeHTTPRequestQueue )
 	
 	request.timeOutSeconds = DEFAULT_POST_TIMEOUT;
 	request.requestMethod = @"POST";
-	request.postFormat = ASIMultipartFormDataPostFormat; // ASIRawPostFormat;
+	request.postFormat = ASIMultipartFormDataPostFormat; // ASIRawPostFormat;//huangbo 0827 修改
+//    request.postFormat =  ASIURLEncodedPostFormat;
 	[request setDelegate:self];
 	[request setDownloadProgressDelegate:self];
 	[request setUploadProgressDelegate:self];
@@ -340,7 +343,9 @@ DEF_SINGLETON( BeeHTTPRequestQueue )
 {
 	return [[BeeHTTPRequestQueue sharedInstance] PUT:url sync:NO];
 }
-
+/*
+ huangbo 有改动
+ */
 - (BeeHTTPRequest *)PUT:(NSString *)url sync:(BOOL)sync
 {
 	BeeHTTPRequest * request = nil;
@@ -355,9 +360,8 @@ DEF_SINGLETON( BeeHTTPRequestQueue )
 	{
 		request = [[BeeHTTPRequest alloc] initWithURL:absoluteURL];
 	}
-
 	request.timeOutSeconds = DEFAULT_PUT_TIMEOUT;
-	request.requestMethod = @"PUT";
+	request.requestMethod = @"POST";//此处改为POST 原来是PUT
 	request.postFormat = ASIURLEncodedPostFormat; // ASIRawPostFormat;
 	[request setDelegate:self];
 	[request setDownloadProgressDelegate:self];
