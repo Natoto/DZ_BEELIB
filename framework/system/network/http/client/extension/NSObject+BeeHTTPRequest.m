@@ -184,7 +184,7 @@
 		url = [[[NSString alloc] initWithFormat:url arguments:args] autorelease];
 		
 		va_end( args );
-
+        BeeLog(@"POST 的网页是 url = %@",url);
 		BeeHTTPRequest * req = [BeeHTTPRequestQueue POST:url];
 		[req addResponder:self];
 		return req;
@@ -225,6 +225,11 @@
 - (BeeHTTPRequestBlockSN)HTTP_POST
 {
 	return [self POST];
+}
+
+- (BeeHTTPRequestBlockSN)HTTP_POST_HUANGBO
+{
+	return [self PUT];
 }
 
 - (BeeHTTPRequestBlockSN)HTTP_DELETE

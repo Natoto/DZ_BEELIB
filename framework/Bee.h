@@ -28,7 +28,7 @@
 //	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 //	IN THE SOFTWARE.
 //
-//#import "UIImage+Bundle.h"
+#import "UIImage+Bundle.h"
 #import "Bee_Precompile.h"
 #import "Bee_Package.h"
 #import "Bee_Version.h"
