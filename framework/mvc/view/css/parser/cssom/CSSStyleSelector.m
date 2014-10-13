@@ -74,7 +74,7 @@
             return element.classes && [element.classes containsObject:selector.value];
         
         if ( selector.match == MatchId )
-            return element.hash && [element.hash isEqualToString:selector.value];
+            return element.hash_ && [element.hash_ isEqualToString:selector.value];
         
         // TODO: attribute check
     }
