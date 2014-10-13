@@ -46,6 +46,7 @@
 @property (nonatomic, readonly) BeeHTTPRequestBlockSN	GET;
 @property (nonatomic, readonly) BeeHTTPRequestBlockSN	PUT;
 @property (nonatomic, readonly) BeeHTTPRequestBlockSN	POST;
+@property (nonatomic, readonly) BeeHTTPRequestBlockSN	HTTP_POST_HUANGBO;
 @property (nonatomic, readonly) BeeHTTPRequestBlockSN	DELETE;
 
 @property (nonatomic, readonly) BeeHTTPRequestBlockSN	HTTP_GET;
@@ -57,6 +58,7 @@
 - (BeeHTTPRequest *)PUT:(NSString *)url;
 - (BeeHTTPRequest *)POST:(NSString *)url;
 - (BeeHTTPRequest *)DELETE:(NSString *)url;
+
 
 - (BeeHTTPRequest *)HTTP_GET:(NSString *)url;
 - (BeeHTTPRequest *)HTTP_PUT:(NSString *)url;
