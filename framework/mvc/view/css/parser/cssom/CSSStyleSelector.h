@@ -51,7 +51,7 @@ typedef enum SelectorMatch {
 - (BOOL)isLastChild;
 - (BOOL)isNthChild:(NSUInteger)index;
 
-- (NSString *)hash_;
+- (NSString *)hash;
 - (NSString *)localName;
 
 - (NSUInteger)index;
