@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>498A761C-3E0D-4B17-A566-3EE6A562F4D6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DZ_BEE</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4829C45C8E9FD2160F76DDD4A5B6A464D8398F2F</key>
+		<string>https://github.com/Natoto/DZ_BEELIB.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DZ_BEE/DZ_BEE.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4829C45C8E9FD2160F76DDD4A5B6A464D8398F2F</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Natoto/DZ_BEELIB.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4829C45C8E9FD2160F76DDD4A5B6A464D8398F2F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4829C45C8E9FD2160F76DDD4A5B6A464D8398F2F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DZ_BEELIB</string>
+		</dict>
+	</array>
+</dict>
+</plist>
