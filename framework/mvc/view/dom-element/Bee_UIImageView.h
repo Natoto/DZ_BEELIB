@@ -40,14 +40,6 @@
 #import "Bee_UILabel.h"
 #import "Bee_UICapability.h"
 
-typedef enum : NSUInteger {
-    COMMAND_NORMARL = 1010 ,
-    COMMAND_2G3GNOSEE ,//2g3g不显示图片
-    COMMAND_2G3GCAN,
-    COMMAND_NOPERMISSION,//没有权限
-    COMMAND_URL,//使用了URL
-}PHOTO_COMMAND;
-
 #pragma mark -
 
 AS_PACKAGE( BeePackage_UI, BeeImageCache, imageCache );
@@ -90,7 +82,6 @@ AS_SIGNAL( LOAD_CACHE )         // 加载缓存
 //AS_SIGNAL( WILL_CHANGE )		// 图将要变了
 //AS_SIGNAL( DID_CHANGED )		// 图已经变了
 
-@property(nonatomic,assign)   PHOTO_COMMAND                 command;
 @property (nonatomic, assign) BOOL							gray;			// 是否变为灰色
 @property (nonatomic, assign) BOOL							round;			// 是否裁剪为圆型
 @property (nonatomic, assign) BOOL							pattern;		// 是否平铺
@@ -109,12 +100,12 @@ AS_SIGNAL( LOAD_CACHE )         // 加载缓存
 @property (nonatomic, assign) NSString *					url;
 @property (nonatomic, assign) NSString *					file;
 @property (nonatomic, assign) NSString *					resource;
-@property (nonatomic, retain) NSString *                    backupurl;
+
 - (void)GET:(NSString *)url useCache:(BOOL)useCache;
 - (void)GET:(NSString *)url useCache:(BOOL)useCache placeHolder:(UIImage *)defaultImage;
 
 - (void)clear;
-- (void)loadonlyCache:(NSString *)newURL;
+
 @end
 
 #endif	// #if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)

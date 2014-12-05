@@ -7,7 +7,7 @@
 //
 //
 //	Copyright (c) 2013-2014, {Bee} open source community
-//	http://www.bee-framework.com
+
 //
 //
 //	Permission is hereby granted, free of charge, to any person obtaining a
@@ -29,8 +29,6 @@
 //	IN THE SOFTWARE.
 //
 
-
-//#define IMAGEURLNEEDADDSECRET 0
 #if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)
 
 #import "Bee_UIImageView.h"
@@ -46,7 +44,6 @@
 #import "UIView+BeeUISignal.h"
 #import "UIView+LifeCycle.h"
 #import "UIView+Transition.h"
-//#import "rmbdz.h"
 
 #pragma mark -
 
@@ -69,7 +66,7 @@ DEF_PACKAGE( BeePackage_UI, BeeImageCache, imageCache );
 
 @implementation BeeImageCache
 
-DEF_SINGLETON( BeeImageCache );
+DEF_SINGLETON( BeeImageCache )
 
 @synthesize memoryCache = _memoryCache;
 @synthesize fileCache = _fileCache;
@@ -255,7 +252,7 @@ DEF_SIGNAL( LOAD_CACHE )
 
 //DEF_SIGNAL( WILL_CHANGE )
 //DEF_SIGNAL( DID_CHANGED )
-@synthesize command;
+
 @synthesize gray = _gray;
 @synthesize round = _round;
 @synthesize pattern = _pattern;
@@ -311,7 +308,7 @@ DEF_SIGNAL( LOAD_CACHE )
 	{
 		self.hidden = NO;
 		self.backgroundColor = [UIColor clearColor];
-//		self.contentMode = UIViewContentModeCenter;//HB MODIFY
+		self.contentMode = UIViewContentModeCenter;
 		self.layer.masksToBounds = YES;
 		self.layer.opaque = YES;
 
@@ -325,8 +322,8 @@ DEF_SIGNAL( LOAD_CACHE )
 		_strechInsets = UIEdgeInsetsZero;
 		
 		_inited = YES;
-         self.command = COMMAND_NORMARL;
-// 		[self load];
+
+//		[self load];
 		[self performLoad];
 	}
 }
@@ -357,57 +354,54 @@ DEF_SIGNAL( LOAD_CACHE )
 
 - (void)GET:(NSString *)string useCache:(BOOL)useCache
 {
-    if ( YES == [string hasPrefix:@"localhost:"] )
-	{
-        NSArray *compants=[string componentsSeparatedByString:@":"];
-        if (compants.count >=2) {
-            self.command = COMMAND_NOPERMISSION;
-            self.image = [UIImage bundleImageNamed:[compants objectAtIndex:1]];
-        }
-    }
-    else        
-	  [self GET:string useCache:useCache placeHolder:nil];
+	[self GET:string useCache:useCache placeHolder:nil];
 }
 
 - (void)GET:(NSString *)newURL useCache:(BOOL)useCache placeHolder:(UIImage *)defaultImage
 {
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
-	if (nil == newURL || 0 == newURL.length )
+
+	if ( nil == newURL || 0 == newURL.length )
 	{
-        [self changeImage:self.defaultImage];
-        return;
+		[self changeImage:self.defaultImage];
+		return;
 	}
+
 	if ( NO == [newURL hasPrefix:@"http://"] )
 	{
 		newURL = [NSString stringWithFormat:@"http://%@", newURL];
 	}
-    
-//    if (IMAGEURLNEEDADDSECRET) {
-//        newURL = [NSString stringWithFormat:@"%@%@",newURL,[ServerConfig sharedInstance].urlpostfix];
-//    }
-    
+
 	if ( [self requestingURL:newURL] )
 	{
 //		[self setNeedsDisplay];
 		return;
 	}
+	
+//	if ( self.loadedURL && [self.loadedURL isEqualToString:newURL] )
+//	{
+////		[self setNeedsDisplay];
+//		return;
+//	}
 
 	self.defaultImage = defaultImage;
 	self.loadedURL = newURL;
 	self.loading = NO;
 	self.loaded = NO;
+
 	[self cancelRequests];
+
 	BeeImageCache * cache = [BeeImageCache sharedInstance];
-	if (useCache && [cache hasCachedForURL:newURL] )
+	if ( [cache hasCachedForURL:newURL] )
 	{
+//		[self changeImage:nil];
+//		[self performSelector:@selector(loadFromCache:) withObject:newURL afterDelay:0.25f];
 		[self loadFromCache:newURL];
 	}
 	else
 	{
-//        if (self.command == COMMAND_2G3GCAN || self.command == COMMAND_WIFI || self.command == COMMAND_NORMARL) {
-            [self changeImage:self.defaultImage];
-            [self performSelector:@selector(loadFromWeb:) withObject:newURL afterDelay:0.05f];
-//        }
+		[self changeImage:self.defaultImage];
+		[self performSelector:@selector(loadFromWeb:) withObject:newURL afterDelay:0.25f];
 	}
 }
 
@@ -416,7 +410,6 @@ DEF_SIGNAL( LOAD_CACHE )
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
 
 	BeeImageCache * cache = [BeeImageCache sharedInstance];
-    self.command = COMMAND_URL;
 	if ( [cache hasCachedForURL:newURL] )
 	{
 		UIImage * image = [cache memoryImageForURL:newURL];
@@ -443,33 +436,6 @@ DEF_SIGNAL( LOAD_CACHE )
 	}
 }
 
-
-- (void)loadonlyCache:(NSString *)newURL
-{
-	BeeImageCache * cache = [BeeImageCache sharedInstance];
-    self.command = COMMAND_URL;
-	if ( [cache hasCachedForURL:newURL] )
-	{
-		UIImage * image = [cache memoryImageForURL:newURL];
-		if ( image )
-		{
-			[self changeImage:image];
-			[self setLoaded:YES];
-			
-			if ( self.enableAllEvents )
-			{
-				[self sendUISignal:BeeUIImageView.LOAD_CACHE];
-			}
-		}
-		else
-		{
-			[self changeImage:self.defaultImage];
-			[self performSelector:@selector(loadFromFile:) withObject:newURL afterDelay:0.25f];
-		}
-	}
-}
-
-
 - (void)loadFromFile:(NSString *)newURL
 {
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
@@ -490,6 +456,7 @@ DEF_SIGNAL( LOAD_CACHE )
 			return;
 		}
 	}
+
 	[self changeImage:self.defaultImage];
 	[self performSelector:@selector(loadFromWeb:) withObject:newURL afterDelay:0.25f];
 }
@@ -679,6 +646,7 @@ DEF_SIGNAL( LOAD_CACHE )
 	
 	[self cancelRequests];
 	[self changeImage:nil];
+
 //	self.defaultImage = nil;
 	self.loadedURL = nil;
 	self.loading = NO;
@@ -787,8 +755,7 @@ DEF_SIGNAL( LOAD_CACHE )
 	PERF_ENTER
 		
 		[_indicator stopAnimating];
-        self.command = COMMAND_URL;
-        
+
 		NSData * data = [request responseData];
 		if ( data )
 		{
@@ -903,38 +870,6 @@ DEF_SIGNAL( LOAD_CACHE )
 	}
 }
 
-
-+ (UIImage*)imageWithImage :( UIImage*)image scaledToSize :(CGSize)newSize;
-
-{
-    
-    // Create a graphics image context    
-    UIGraphicsBeginImageContext(newSize);
-    // Tell the old image to draw in this new context, with the desired
-    // new size
-    
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    
-    
-    
-    // Get the new image from the context
-    
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    
-    
-    // End the context
-    
-    UIGraphicsEndImageContext();
-    
-    
-    
-    // Return the new image.
-    
-    return newImage;
-    
-}
- 
-
 @end
+
 #endif	// #if (TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR)
